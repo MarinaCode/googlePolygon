@@ -1,0 +1,8 @@
+<ng-template #content let-c="close" let-d="dismiss" >
+  <div class="modal-body map-tool-container">
+    <app-googlemap-component (updateGridData)="updateGrid($event)"></app-googlemap-component>
+    <app-map-selection-tools [locationData] = "locationData"></app-map-selection-tools>
+  </div>
+</ng-template>
+<button type="button" (click)="openPopup(content)" class="btn btn-info btn-lg"> Add New </button>
+

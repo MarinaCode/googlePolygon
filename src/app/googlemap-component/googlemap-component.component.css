@@ -1,0 +1,10 @@
+#googleMapComponent {
+  height:600px;
+  min-height:600px;
+}
+
+.map-container {
+  width: 70%;
+  float: left;
+
+}

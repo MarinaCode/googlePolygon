@@ -1,0 +1,105 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+.selection-tool-container {
+  width: 30%;
+  min-height:600px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  justify-content: space-between;
+
+}
+
+.selection-tool-container .address-sectoin {
+  width: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  margin-top:30px;
+}
+
+.selection-tool-container .confirm-section,.selection-tool-container .reset-section{
+  width: 100%;
+  text-align: center;
+  margin:10px 0 0 0 ;
+}
+
+.selection-tool-container .confirm-section{
+  /*position: relative;*/
+  /*bottom:70px;*/
+  margin-bottom:70px;
+}
+
+.selection-tool-container .reset-section {
+  margin-bottom: 30px;
+}
+
+.confirm-section .confirm-section-btn, .reset-section .reset-section-btn {
+  padding: 5px 10px;
+  border-radius: 5%;
+  outline: none;
+}
+.confirm-section .confirm-section-btn {
+  background: #404040;
+  border:1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.reset-section .reset-section-btn {
+  background: #B0E0E6;
+  border:1px solid #B0E0E6;
+  color: #000;
+}
+
+.reset-section .reset-section-btn:hover {
+  opacity: 0.5;
+}
+
+.confirm-section .confirm-section-btn[disabled]{
+  border: 1px solid #A9A9A9	;
+  background-color: #696969	;
+  color: #000;
+}
+.selection-tool-container button {
+}
+.selection-tool-container h4 {
+  text-transform: uppercase;
+}
+
+.selection-tool-container a {
+  color: #FF8C00;
+  text-decoration: underline;
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.search-input {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.search-input .fa-search {
+  position: absolute;
+  top: 10px;
+  right:10px;
+}
+
+
+/* Media */
+@media only screen and (max-width: 750px) {
+  .selection-tool-container h4 {
+    font-size: 15px;
+  }
+  .selection-tool-container p ,
+  .selection-tool-container a{
+    font-size: 12px;
+  }
+  .confirm-section .confirm-section-btn,.reset-section .reset-section-btn  {
+    font-size: 12px;
+  }
+  .selection-tool-container .confirm-section {
+    margin-bottom: 20px;
+  }
+}

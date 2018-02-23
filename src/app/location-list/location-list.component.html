@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Headings</th>
+    <th scope="col">Address</th>
+    <th scope="col">Area Size</th>
+    <th scope="col">Points Locations</th>
+    <th scope="col">-</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locationList; let i=index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{location.location.formatted_address}}</td>
+      <td>{{location.area}} m<sup>2</sup></td>
+      <td><span *ngFor="let path of location.paths">{{path.lat}} - {{path.lng}} ; </span></td>
+      <td><button type="button" class="btn btn-link" (click)="editLocation(i)">Edit</button></td>
+    </tr>
+
+  </tbody>
+</table>

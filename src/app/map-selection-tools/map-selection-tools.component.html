@@ -1,0 +1,18 @@
+<div class="selection-tool-container">
+<div class="address-sectoin">
+  <h4>Map Selection Tool</h4>
+  <p>Click around the area where you would like use to fly. Please completely complete by connecting to where you started.</p>
+  <a href="#">Need Help?</a>
+  <label>Address</label>
+  <div class="search-input">
+    <span class="fa fa-search"></span>
+    <input type="text" #searchName class="form-control" placeholder="Search" name="Search" appGoogleAutocomplete (setPlace)="setPlaces($event, false)" />
+  </div>
+</div>
+<div class="confirm-section">
+  <button [disabled]="!isValid()" class="confirm-section-btn" (click)="confirmSelection()"> Confirm selection </button>
+</div>
+  <div class="reset-section">
+    <button class="reset-section-btn" (click)="resetSelection()"> Reset selection</button>
+  </div>
+</div>
