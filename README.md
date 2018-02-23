@@ -1,3 +1,9 @@
+#Description 
+
+Google Polygon is an angular2 js app, which allows to select and  draw areas on google map.
+<br>
+Design and develop area selection tool: google maps javascript sdk, drawing api and Angularjs 2, bootstrap
+
 # GooglePolygone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
