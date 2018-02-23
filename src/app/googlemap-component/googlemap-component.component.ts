@@ -10,11 +10,11 @@ export class GooglemapComponentComponent implements OnInit {
   @Output() updateGridData: EventEmitter<any> = new EventEmitter();
   @Output() updateToolsButton: EventEmitter<any> = new EventEmitter();
   map: any;
-  selectedPoligon: any;
+  selectedPolygon: any;
   selectedLocation: any = {};
   drawingManager: any;
   infoWindow: any;
-  poligonOptions: any = {
+  polygonOptions: any = {
     draggable: false,
     editable: false,
     fillColor: '#ff9502',
@@ -36,17 +36,17 @@ export class GooglemapComponentComponent implements OnInit {
     this.drawingManager = new google.maps.drawing.DrawingManager({
       drawingMode: google.maps.drawing.OverlayType.POLYGON,
       drawingControl: false,
-      polygonOptions: this.poligonOptions,
+      polygonOptions: this.polygonOptions,
       drawingControlOptions: {
         position: google.maps.ControlPosition.TOP_CENTER,
         drawingModes: ['polygon']
       }
     });
-    google.maps.event.addListener(this.drawingManager, 'overlaycomplete', (poligon) => {
-      this.selectedPoligon = poligon;
+    google.maps.event.addListener(this.drawingManager, 'overlaycomplete', (polygon) => {
+      this.selectedPolygon = polygon;
       this.drawingManager.setDrawingMode(null);
-      this.service.notifyUpdateButtonTools(this.selectedPoligon);
-      this.openInfoArea(poligon.overlay);
+      this.service.notifyUpdateButtonTools(this.selectedPolygon);
+      this.openInfoArea(polygon.overlay);
     });
 
     this.service.addressChanged.subscribe((data) => {
@@ -65,10 +65,10 @@ export class GooglemapComponentComponent implements OnInit {
           strokeWidth: 2,
           path:  data.addressData.paths
         });
-        this.selectedPoligon = polygon;
+        this.selectedPolygon = polygon;
         polygon.setMap(this.map);
         this.drawingManager.setDrawingMode(null);
-        this.openInfoArea(this.selectedPoligon);
+        this.openInfoArea(this.selectedPolygon);
       }
     });
     this.service.resetSelection.subscribe(() => {
@@ -79,8 +79,8 @@ export class GooglemapComponentComponent implements OnInit {
     });
   }
 
-  openInfoArea(poligon) {
-    const path = poligon.getPath();
+  openInfoArea(polygon) {
+    const path = polygon.getPath();
     this.selectedLocation.area = google.maps.geometry.spherical.computeArea(path).toFixed(2);
     const content = 'Area: ' + this.selectedLocation.area + ' m<sup>2</sup>';
     this.infoWindow.setContent(content);
@@ -94,8 +94,8 @@ export class GooglemapComponentComponent implements OnInit {
   }
 
   clearSelection() {
-    if (this.selectedPoligon) {
-      this.selectedPoligon.overlay ? this.selectedPoligon.overlay.setMap(null) : this.selectedPoligon.setMap(null);
+    if (this.selectedPolygon) {
+      this.selectedPolygon.overlay ? this.selectedPolygon.overlay.setMap(null) : this.selectedPolygon.setMap(null);
     }
     this.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
     this.infoWindow.close();
